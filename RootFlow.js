@@ -9,7 +9,7 @@ os.getIP('ipv4').then(function(succ){
 
   console.log('######SERVER INFO######\nIP : %s\nProject path : %s', succ, config.path);
   var httpServer = require(config.path + '/bin/WebFlow')({
-    "server-name" : "News",
+    "server-name" : "NewHTTPServerName",
     "project-path" : config.path,
     "protocol" : config.http.protocol,
     "port" : config.http.port,

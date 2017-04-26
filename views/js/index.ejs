@@ -1,0 +1,29 @@
+<%# angularJS CDN %>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js'>
+</script>
+
+<%# libs%>
+  <%# bootstrap.ui %>
+<script src='/resources/js/ui-bootstrap-tpls-2.4.0.min'>
+</script>
+
+<%# Bootstrap CDN %>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<%# ngRoute %>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js'>
+</script>
+
+<script>
+  angular.module('App.constants', []);
+  angular.module('App.services', ['App.constants']);
+  angular.module('App.controllers', ['App.services']);
+  angular.module('App', ['ui.bootstrap', 'ngRoute', 'App.constants', 'App.services', 'App.controllers'])
+    .config(function($routeProvider){
+      $routeProvider
+        .when('/', {templateUrl : 'resources/ejs/home'})
+        .when('/tab1', {templateUrl : 'resources/ejs/tab1'})
+        .when('/tab2', {templateUrl : 'resources/ejs/tab2'})
+        .otherwise({redirectTo : '/'});
+    });
+</script>

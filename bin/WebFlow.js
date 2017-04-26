@@ -2,17 +2,19 @@ var Promise = require('bluebird');
 
 module.exports = function(config){
   return new Promise(function(resolve, reject){
-    var debug = require('debug')('news:server');
+    var debug = require('debug')(config['server-name'] + ':server');
     var http = require('http');
 
     var express = require('express');
     var path = require('path');
-    var favicon = require('serve-favicon');
+    // var favicon = require('serve-favicon');
     var logger = require('morgan');
     var cookieParser = require('cookie-parser');
     var bodyParser = require('body-parser');
 
     var methodOverride = require('method-override');
+
+    var views = require(config['project-path'] + '/routes/views')(config);
 
     var app = express();
 
@@ -35,6 +37,9 @@ module.exports = function(config){
         return method;
       }
     }));
+
+    //Routers
+    app.use('/', views);
 
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {

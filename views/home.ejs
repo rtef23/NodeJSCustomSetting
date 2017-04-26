@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app='App'>
+  <head>
+    <title>App</title>
+    <%# <link rel='stylesheet' href='/stylesheets/style.css' />%>
+    <% include ./js/index.ejs %>
+  </head>
+  <body>
+    <div class='container'>
+      <ul class='nav nav-tabs'>
+        <li><a href="#!/">Home</a></li>
+        <li><a href="#!/tab1">Tab 1</a></li>
+        <li><a href="#!/tab2">Tab 2</a></li>
+      </ul>
+    </div>
+    <div class='container' ng-view>
+    </div>
+  </body>
+</html>
