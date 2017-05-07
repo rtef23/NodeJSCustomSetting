@@ -5,7 +5,16 @@ var config = require('./private/configs/serverConfig.json');
 var util = require('util');
 
 os.getIP('ipv4').then(function(succ){
-  config.path['project'] = process.cwd();
+  var project_path = process.cwd();
+  var keys = Object.keys(config['path']);
+
+  for(var i in keys){
+    var file_path = util.format('%s%s', project_path, config['path'][keys[i]]);
+    if(!fs.existsSync(file_path)){
+      fs.mkdirSync(file_path);
+    }
+  }
+  config.path['project'] = project_path;
 
   console.log('######SERVER INFO######\nIP : %s\nProject path : %s', succ, config.path['project']);
   var httpServer = require(config.path['project'] + '/bin/WebFlow')({
