@@ -14,12 +14,12 @@ module.exports = function(config){
 
     var methodOverride = require('method-override');
 
-    var views = require(config['project-path'] + '/routes/views')(config);
+    var views = require(config['path']['project'] + '/routes/views')(config);
 
     var app = express();
 
     // view engine setup
-    app.set('views', path.join(config['project-path'], 'views'));
+    app.set('views', path.join(config['path']['project'], 'views'));
     app.set('view engine', 'ejs');
 
     // uncomment after placing your favicon in /public
@@ -28,7 +28,7 @@ module.exports = function(config){
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(cookieParser());
-    app.use(express.static(path.join(config['project-path'], 'public')));
+    app.use(express.static(path.join(config['path']['project'], 'public')));
 
     app.use(methodOverride(function(req, res){
       if(req.body && typeof req.body == 'object' && '_method' in req.body){

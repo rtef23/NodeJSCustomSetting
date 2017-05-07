@@ -3,7 +3,7 @@ const file = '/utils/db.js';
 module.exports = function(config){
 	var util = require('util');
 	var Promise = require('bluebird');
-	var dbInfo = require(config.path + '/private/infos/db_info.json');
+	var dbInfo = require(config['path']['project'] + '/private/infos/db_info.json');
 	var mysql = require('mysql');
 
 	if(!config){
